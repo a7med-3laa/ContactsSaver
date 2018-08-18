@@ -38,6 +38,14 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 tools:text="+201127370670" />
 
+            <TextView
+                android:id="@+id/contact_address"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:maxLines="1"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                tools:text="+ddddd" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -45,8 +53,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:gravity="center"
             android:orientation="vertical"
+            android:gravity="center"
             android:padding="2dp">
 
             <ImageButton

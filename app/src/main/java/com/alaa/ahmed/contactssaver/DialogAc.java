@@ -13,6 +13,7 @@ public class DialogAc extends AppCompatActivity {
 
     private TextInputEditText mContactName;
     private TextInputEditText mContactNumber;
+    private TextInputEditText mContactAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +23,14 @@ public class DialogAc extends AppCompatActivity {
         setFinishOnTouchOutside(true);
         mContactName = findViewById(R.id.contact_name);
         mContactNumber = findViewById(R.id.contact_number);
+        mContactAddress = findViewById(R.id.contact_address);
+
         Button mButton = findViewById(R.id.button);
 
 
         String name = getIntent().getStringExtra("name");
         String phone = getIntent().getStringExtra("phone");
+        String address = getIntent().getStringExtra("address");
         final int id = getIntent().getIntExtra("id", -1);
 
         if (name == null) {
@@ -35,15 +39,20 @@ public class DialogAc extends AppCompatActivity {
         if (phone == null) {
             phone = "";
         }
+        if (address == null) {
+            address = "";
+        }
         mContactName.setText(name);
         mContactNumber.setText(phone);
-
+        mContactAddress.setText(address);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 final String finalPhone = mContactNumber.getText().toString();
                 final String finalName = mContactName.getText().toString();
+                final String finalAddress = mContactAddress.getText().toString();
+
                 if (TextUtils.isEmpty(finalName)) {
                     mContactName.setError("Name is Required");
                     return;
@@ -60,6 +69,7 @@ public class DialogAc extends AppCompatActivity {
                 }
                 contact.name = finalName;
                 contact.phoneNumber = finalPhone;
+                contact.address = finalAddress;
                 contact.save();
                 finish();
             }

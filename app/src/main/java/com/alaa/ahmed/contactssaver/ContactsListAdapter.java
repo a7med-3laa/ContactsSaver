@@ -49,6 +49,7 @@ public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapte
     public void onBindViewHolder(@NonNull holder holder, int position) {
         holder.mContactName.setText(contacts.get(position).name);
         holder.mContactNumber.setText(contacts.get(position).phoneNumber);
+        holder.mContactAddress.setText(contacts.get(position).address);
         if (selectedIds.contains(contacts.get(position).id)) {
             //if item is selected then,set foreground color of FrameLayout.
             holder.itemView.setBackground(new ColorDrawable(ContextCompat.getColor(holder.mCall.getContext(), R.color.colorControlActivated)));
@@ -77,6 +78,8 @@ public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapte
 
         private TextView mContactName;
         private TextView mContactNumber;
+        private TextView mContactAddress;
+
         private LinearLayout mCall;
         private LinearLayout mEdit;
         private LinearLayout mDelete;
@@ -85,6 +88,7 @@ public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapte
             super(itemView);
             mContactName = itemView.findViewById(R.id.contact_name);
             mContactNumber = itemView.findViewById(R.id.contact_number);
+            mContactAddress = itemView.findViewById(R.id.contact_address);
             mCall = itemView.findViewById(R.id.call);
             mEdit = itemView.findViewById(R.id.edit);
             mDelete = itemView.findViewById(R.id.delete);
@@ -122,6 +126,8 @@ public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapte
 
                     intent.putExtra("phone", contacts.get(getAdapterPosition()).phoneNumber);
                     intent.putExtra("id", contacts.get(getAdapterPosition()).id);
+                    intent.putExtra("address", contacts.get(getAdapterPosition()).address);
+
                     v.getContext().startActivity(intent);
                 }
             });
