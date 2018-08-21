@@ -15,8 +15,6 @@
         android:singleLine="true"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:padding="5dp"
-
-        android:textColor="#000"
         tools:text="Ahmed Alaa Abdelsalam Hassan" />
 
     <TextView
