@@ -3,6 +3,7 @@ package com.alaa.ahmed.contactssaver;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -18,12 +19,17 @@ public class DialogCall extends AppCompatActivity {
         setWindowParams();
         String name = getIntent().getStringExtra("name");
         String phone = getIntent().getStringExtra("phone");
+        String address = getIntent().getStringExtra("address");
 
         mContactName = findViewById(R.id.contact_name);
         mContactNumber = findViewById(R.id.contact_number);
-
+        TextView location = findViewById(R.id.contact_location);
         mContactName.setText(name);
         mContactNumber.setText(phone);
+        if (address != null) {
+
+            location.setText(address);
+        }
     }
 
     @Override
@@ -47,5 +53,9 @@ public class DialogCall extends AppCompatActivity {
         getWindow().setAttributes(wlp);
         setFinishOnTouchOutside(true);
 
+    }
+
+    public void close(View view) {
+    finish();
     }
 }

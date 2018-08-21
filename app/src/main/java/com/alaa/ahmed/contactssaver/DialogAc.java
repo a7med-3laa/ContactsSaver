@@ -96,4 +96,8 @@ public class DialogAc extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
         getWindow().setAttributes(wlp);
     }
+
+    public void close(View view) {
+        finish();
+    }
 }

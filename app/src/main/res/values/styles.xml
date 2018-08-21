@@ -20,7 +20,6 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="aa" parent="Base.Theme.AppCompat.Dialog.FixedSize">
-        <item name="windowFixedHeightMajor">200dp</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>

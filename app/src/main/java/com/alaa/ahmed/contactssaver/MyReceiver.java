@@ -22,13 +22,16 @@ public class MyReceiver extends BroadcastReceiver {
             if (state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
                 Toast.makeText(context, "inside", Toast.LENGTH_SHORT).show();
                 String incomingNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
+                if (!incomingNumber.trim().startsWith("+2"))
+                    incomingNumber = "+2" + incomingNumber.trim();
+
                 String outgoingNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
                 List<Contact> organizationList = SQLite.select().
                         from(Contact.class).where(Contact_Table.phoneNumber.eq(incomingNumber)).queryList();
                 if (organizationList.size() > 0) {
                     Intent intent2 = new Intent(context, DialogCall.class);
                     intent2.putExtra("name", organizationList.get(0).name);
-
+                    intent2.putExtra("address", organizationList.get(0).address);
                     intent2.putExtra("phone", incomingNumber);
                     intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent2);
